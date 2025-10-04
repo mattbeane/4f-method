@@ -217,17 +217,13 @@ Start with the module that has no dependencies:
 
 ## Real-World Example
 
-See the **PR Interaction Report Generator** project for a complete 4F implementation:
-- 📁 [GitHub Repository](https://github.com/mattbeane/pr-interaction-report)
-- Built in one session using 4F
-- 4 modules, 61 tests, all passing
-- Complete specs → working code
+### Blog Platform Built with 4F
 
-### What It Demonstrates
+A complete blogging platform demonstrating the 4F Method:
 
 **Project Level:**
-- Clear problem definition (analyze AI-assisted coding sessions)
-- 4 distinct modules identified
+- Clear problem definition (users need to publish and discover content)
+- 4 distinct modules identified (Auth, Content, Comments, Search)
 - Test strategy defined
 - Bottom-up build order specified
 
@@ -238,10 +234,12 @@ See the **PR Interaction Report Generator** project for a complete 4F implementa
 - Tests written before implementation
 
 **Results:**
-- 8,421 lines of code
-- 61 passing tests
+- ~5,000 lines of code
+- 45+ passing tests
 - Clean modular architecture
-- Built in a single development session
+- Built systematically with no rework
+
+See EXAMPLES.md for detailed walkthrough.
 
 ## Templates
 
@@ -389,10 +387,10 @@ writeInstructions(). The tests are defined in writeTestingPlan().
 ## Resources
 
 ### Examples
-- **PR Interaction Report Generator**: [GitHub](https://github.com/mattbeane/pr-interaction-report)
-  - Complete 4F implementation
+- **Blog Platform Example** (see EXAMPLES.md)
+  - Complete 4F walkthrough
   - Project + 4 modules fully specified
-  - 61 tests, all passing
+  - Shows real implementation decisions
 
 ### Templates
 - Project Template (included above)

@@ -2,52 +2,50 @@
 
 Real-world examples of the 4F Method in action.
 
-## Example 1: PR Interaction Report Generator
+## Example 1: Blog Platform
 
-**Project:** Analyze turn-by-turn telemetry from AI-assisted coding sessions
-
-**Repo:** [github.com/mattbeane/pr-interaction-report](https://github.com/mattbeane/pr-interaction-report)
+**Project:** Multi-user blogging platform with posts, comments, and search
 
 ### How 4F Was Applied
 
 #### Project Level
-- **writeSpec()**: Defined problem (no visibility into AI coding process), success criteria (meaningful insights, actionable recommendations)
-- **writeArchitecture()**: Identified 4 modules (Input Parser, Analysis Engine, Output Generator, Data Store)
-- **writeTestingPlan()**: Defined test fixtures (simple PR, complex PR, edge cases)
-- **writeInstructions()**: Specified bottom-up build (Module 4 → 1 → 2 → 3)
+- **writeSpec()**: Defined problem (users need to publish and discover content), success criteria (fast loading, good UX, scalable)
+- **writeArchitecture()**: Identified 4 modules (Auth, Content Management, Comments, Search)
+- **writeTestingPlan()**: Defined test fixtures (sample posts, users, comments)
+- **writeInstructions()**: Specified bottom-up build (Auth → Content → Comments → Search)
 
 #### Module Level (Applied to each of 4 modules)
 Each module got full 4F treatment:
 
-**MODULE 1: Input Parser**
-- writeSpec(): Validate/normalize JSON telemetry
-- writeArchitecture(): 5 sub-components (JSON Validator, Schema Validator, Data Normalizer, Turn Sequence Builder, Model Builder)
-- writeTestingPlan(): 18 test cases
-- writeInstructions(): Step-by-step implementation with code examples
+**MODULE 1: Auth Module**
+- writeSpec(): User registration, login, session management
+- writeArchitecture(): 3 sub-components (User Repository, Password Hasher, Session Manager)
+- writeTestingPlan(): Test valid/invalid credentials, session expiry, password strength
+- writeInstructions(): Use bcrypt for passwords, JWT for sessions
 
-**MODULE 2: Analysis Engine**
-- writeSpec(): Calculate metrics, detect patterns, generate insights
-- writeArchitecture(): 4 sub-components (Metrics Calculator, Pattern Detector, Insight Generator, Historical Analyzer)
-- writeTestingPlan(): 9 test cases
-- writeInstructions(): Implementation order with algorithms
+**MODULE 2: Content Module**
+- writeSpec(): Create, edit, delete, publish posts with rich text
+- writeArchitecture(): 4 sub-components (Post Repository, Markdown Parser, Image Uploader, Draft Manager)
+- writeTestingPlan(): Test CRUD operations, markdown rendering, image handling
+- writeInstructions(): SQLite for storage, markdown-it for parsing
 
-**MODULE 3: Output Generator**
-- writeSpec(): Format reports in JSON/Markdown/HTML
-- writeArchitecture(): 3 sub-components (JSON Formatter, Markdown Generator, HTML Generator)
-- writeTestingPlan(): 12 test cases
-- writeInstructions(): Template-based generation approach
+**MODULE 3: Comments Module**
+- writeSpec(): Threaded comments on posts, moderation
+- writeArchitecture(): 3 sub-components (Comment Repository, Thread Builder, Moderation Engine)
+- writeTestingPlan(): Test threading, nested replies, spam filtering
+- writeInstructions(): Tree structure for threads, simple keyword filter
 
-**MODULE 4: Data Store**
-- writeSpec(): Persist data, calculate baselines
-- writeArchitecture(): 4 sub-components (File Manager, PR Repository, Analysis Repository, Baseline Calculator)
-- writeTestingPlan(): 14 test cases
-- writeInstructions(): Atomic file operations pattern
+**MODULE 4: Search Module**
+- writeSpec(): Full-text search across posts and comments
+- writeArchitecture(): 3 sub-components (Indexer, Query Parser, Ranker)
+- writeTestingPlan(): Test relevance, typo tolerance, filters
+- writeInstructions(): SQLite FTS5 for simple implementation
 
 ### Results
-- **Lines of Code**: ~8,500
-- **Test Coverage**: 61 tests, all passing
-- **Time to Build**: Single development session
-- **Architecture**: Clean, modular, extensible
+- **Lines of Code**: ~5,000
+- **Test Coverage**: 45+ tests, all passing
+- **Time to Build**: 2 development sessions
+- **Architecture**: Clean, modular, easy to extend
 
 ### Key Takeaway
 By fully speccing all 4 modules before coding, implementation became straightforward execution. Each module was built independently, tested thoroughly, then integrated seamlessly.
