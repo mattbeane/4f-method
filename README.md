@@ -19,6 +19,24 @@ The 4F Method is a recursive approach to software development created by **Danie
 - ✅ Test cases defined upfront
 - ✅ Implementation becomes straightforward execution
 
+## Two Approaches
+
+**4F Method works for both greenfield and existing codebases:**
+
+### Greenfield (Building New)
+Top-down specification → bottom-up implementation
+- Start with requirements
+- Recurse through architecture
+- Build from dependencies up
+
+### Existing Codebase (4F-EC)
+Bottom-up understanding → risk-ordered fixes
+- Reverse-engineer spec from code
+- Find all related bugs
+- Fix systematically (least risky → most risky)
+
+[See 4F for Existing Codebases](4f-existing-codebase.md) for detailed methodology.
+
 ## The Four Functions
 
 Apply these four functions at each level of your system:
@@ -97,10 +115,25 @@ PROJECT LEVEL
 
 ## Quick Start Guide
 
+### Step 0: Define Your Profile
+
+**Before starting, customize 4F for your skill level:**
+
+The 4F Method adapts to developers of all backgrounds. Use the [User Profile Template](templates/user-profile.md) to:
+- Define your code familiarity (new/learning/experienced/senior)
+- Set your learning preferences (how much explanation you want)
+- Establish safety requirements (personal/team/production)
+- Configure "The Deal" with Claude (working norms)
+
+**Recommended:** Copy the profile template to your project's `.claude.md` file before beginning.
+
+[Learn more about The Deal](the-deal.md) - Working norms that reduce friction and improve output quality.
+
 ### Step 1: Project Setup
 Create your project structure:
 ```
 my-project/
+├── .claude.md            ← Your profile and working norms
 ├── PROJECT-SPEC.md
 ├── MODULE-1-[NAME].md
 ├── MODULE-2-[NAME].md
@@ -370,7 +403,13 @@ writeInstructions(). The tests are defined in writeTestingPlan().
 
 ### Q: Can I use 4F for existing projects?
 
-**A:** Yes! Apply it to new modules or when refactoring. Create specs for what exists, then recurse for new components.
+**A:** Yes! Use [4F for Existing Codebases (4F-EC)](4f-existing-codebase.md) - a bottom-up methodology that reverses the process. Instead of spec → code, you do code → spec → systematic fixes. Great for bug hunts, legacy code, and inherited projects.
+
+See [Daniel's Bug Hunt](examples/daniels-bug-hunt.md) for a real example: 8 bugs fixed in 90 minutes using 4F-EC.
+
+### Q: I'm new to coding. Can I use 4F?
+
+**A:** Absolutely. Start with the [User Profile Template](templates/user-profile.md) to customize 4F for your level. The method adapts - experienced developers move faster, learners get more explanation. The core process is the same.
 
 ### Q: What if requirements change?
 
@@ -386,16 +425,20 @@ writeInstructions(). The tests are defined in writeTestingPlan().
 
 ## Resources
 
-### Examples
-- **Blog Platform Example** (see EXAMPLES.md)
-  - Complete 4F walkthrough
-  - Project + 4 modules fully specified
-  - Shows real implementation decisions
+### Core Methodology
+- **[4F for Existing Codebases (4F-EC)](4f-existing-codebase.md)** - Bottom-up approach for legacy code, bug hunts, inherited projects
+- **[The Deal](the-deal.md)** - Working norms with Claude (reduces friction, enables honest feedback)
+- **[Meta-Automation](advanced/meta-automation.md)** - Apply 4F recursively to your productivity systems
 
-### Templates
-- Project Template (included above)
-- Module Template (included above)
-- Copy and customize for your needs
+### Templates & Workflows
+- **[User Profile Template](templates/user-profile.md)** - Customize 4F for your skill level and learning style
+- **[Bug Fix Workflow](templates/bug-fix-workflow.md)** - Step-by-step guide with prompts for fixing bugs systematically
+- **Project Template** (included above) - Greenfield 4F structure
+- **Module Template** (included above) - Component-level specification
+
+### Examples
+- **[Daniel's Bug Hunt](examples/daniels-bug-hunt.md)** - Real case study: 8 bugs fixed in 90 minutes with 4F-EC
+- **Blog Platform Example** (see EXAMPLES.md) - Complete greenfield walkthrough with project + 4 modules fully specified
 
 ### Community
 - Share your 4F projects
